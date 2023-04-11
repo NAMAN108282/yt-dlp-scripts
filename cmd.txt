@@ -1,0 +1,16 @@
+1. yt-dlp -F url
+
+2 best audio video code: yt-dlp -f bestvideo[ext!=webm]/bestaudio[ext!=webm]/best[ext!=webm] <playlist_url>
+
+or 
+
+yt-dlp -f 299+258 --merge-output-format mkv <url>
+
+3. Whole Playlist
+yt-dlp -f bestvideo+bestaudio/best -o "%(playlist_index)s-%(title)s.%(ext)s" <playlist_url>
+
+5. Whole Channel
+yt-dlp -f bestvideo+bestaudio/best -ciw -o "%(autonumber)s-%(title)s.%(ext)s" <channel_link>
+
+MERGE VIDEO AND AUDIO:
+ffmpeg -i abc.mp4 -i abc.mp3 -shortest -c:v copy -c:a aac -map 0:v:0 -map 1:a:0 output.mp4
